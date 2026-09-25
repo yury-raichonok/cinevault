@@ -88,7 +88,9 @@ services:
   # ── Microservices ─────────────────────────────────────────────────────────
 
   api-gateway:
-    build: ./backend/api-gateway
+    build:
+      context: .
+      dockerfile: backend/api-gateway/Dockerfile
     ports:
       - "8080:8080"
     environment:
@@ -102,7 +104,9 @@ services:
       - cinevault-net
 
   auth-service:
-    build: ./backend/auth-service
+    build:
+      context: .
+      dockerfile: backend/auth-service/Dockerfile
     ports:
       - "8081:8081"
     environment:
@@ -123,7 +127,9 @@ services:
       - cinevault-net
 
   user-service:
-    build: ./backend/user-service
+    build:
+      context: .
+      dockerfile: backend/user-service/Dockerfile
     ports:
       - "8082:8082"
     environment:
@@ -141,7 +147,9 @@ services:
       - cinevault-net
 
   catalog-service:
-    build: ./backend/catalog-service
+    build:
+      context: .
+      dockerfile: backend/catalog-service/Dockerfile
     ports:
       - "8083:8083"
     environment:
@@ -160,7 +168,9 @@ services:
       - cinevault-net
 
   review-service:
-    build: ./backend/review-service
+    build:
+      context: .
+      dockerfile: backend/review-service/Dockerfile
     ports:
       - "8084:8084"
     environment:
@@ -178,7 +188,9 @@ services:
       - cinevault-net
 
   streaming-service:
-    build: ./backend/streaming-service
+    build:
+      context: .
+      dockerfile: backend/streaming-service/Dockerfile
     ports:
       - "8085:8085"
     environment:
@@ -194,7 +206,9 @@ services:
       - cinevault-net
 
   recommendation-service:
-    build: ./backend/recommendation-service
+    build:
+      context: .
+      dockerfile: backend/recommendation-service/Dockerfile
     ports:
       - "8086:8086"
     environment:
@@ -213,7 +227,9 @@ services:
       - cinevault-net
 
   notification-service:
-    build: ./backend/notification-service
+    build:
+      context: .
+      dockerfile: backend/notification-service/Dockerfile
     ports:
       - "8087:8087"
     environment:
