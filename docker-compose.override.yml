@@ -1,0 +1,97 @@
+services:
+
+  # ── Infrastructure — restart policy for dev stability ─────────────────────
+
+  postgres:
+    restart: unless-stopped
+
+  mongodb:
+    restart: unless-stopped
+
+  redis:
+    restart: unless-stopped
+
+  kafka:
+    restart: unless-stopped
+
+  # ── Microservices — remote debug + hot reload ─────────────────────────────
+  #
+  # Remote debug ports: 5080-5087 (mirrors service ports 8080-8087)
+  # Connect from IntelliJ: Run > Edit Configurations > Remote JVM Debug
+  #   Host: localhost, Port: 508X
+  #
+  # Hot reload: IDE compiles to build/classes → DevTools detects change → restarts
+  # Gradle path:  ./backend/<service>/build/classes/java/main
+  # Maven path:   ./backend/<service>/target/classes
+
+  api-gateway:
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      LOGGING_LEVEL_COM_CINEVAULT: DEBUG
+    ports:
+      - "5080:5005"
+    volumes:
+      - ./backend/api-gateway/build/classes/java/main:/app/classes
+
+  auth-service:
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      LOGGING_LEVEL_COM_CINEVAULT: DEBUG
+    ports:
+      - "5081:5005"
+    volumes:
+      - ./backend/auth-service/build/classes/java/main:/app/classes
+
+  user-service:
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      LOGGING_LEVEL_COM_CINEVAULT: DEBUG
+    ports:
+      - "5082:5005"
+    volumes:
+      - ./backend/user-service/build/classes/java/main:/app/classes
+
+  catalog-service:
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      LOGGING_LEVEL_COM_CINEVAULT: DEBUG
+    ports:
+      - "5083:5005"
+    volumes:
+      - ./backend/catalog-service/build/classes/java/main:/app/classes
+
+  review-service:
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      LOGGING_LEVEL_COM_CINEVAULT: DEBUG
+    ports:
+      - "5084:5005"
+    volumes:
+      - ./backend/review-service/build/classes/java/main:/app/classes
+
+  streaming-service:
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      LOGGING_LEVEL_COM_CINEVAULT: DEBUG
+    ports:
+      - "5085:5005"
+    volumes:
+      - ./backend/streaming-service/build/classes/java/main:/app/classes
+
+  recommendation-service:
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      LOGGING_LEVEL_COM_CINEVAULT: DEBUG
+    ports:
+      - "5086:5005"
+    volumes:
+      - ./backend/recommendation-service/build/classes/java/main:/app/classes
+
+  notification-service:
+    environment:
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      LOGGING_LEVEL_COM_CINEVAULT: DEBUG
+    ports:
+      - "5087:5005"
+    volumes:
+      - ./backend/notification-service/build/classes/java/main:/app/classes
