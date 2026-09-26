@@ -11,7 +11,20 @@
     "sourceMap": true,
     "rootDir": "./src",
     "outDir": "dist",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@atoms/*": ["./src/components/atoms/*"],
+      "@molecules/*": ["./src/components/molecules/*"],
+      "@organisms/*": ["./src/components/organisms/*"],
+      "@layouts/*": ["./src/components/layouts/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@services/*": ["./src/services/*"],
+      "@store/*": ["./src/store/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@app-types/*": ["./src/types/*"],
+      "@styles/*": ["./src/styles/*"]
+    }
   },
   "include": ["src/**/*"]
 }
