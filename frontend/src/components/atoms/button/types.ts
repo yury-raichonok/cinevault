@@ -1,8 +1,10 @@
-import { ButtonSize, ButtonType } from "@app-types/types";
+import { ButtonSize, ButtonType, ButtonStyle } from "@app-types/common/types";
 
 export interface ButtonProps {
     size?: ButtonSize,
     type: ButtonType,
+    style?: ButtonStyle,
+    disabled?: boolean,
     text: string,
     link?: string,
     onClick?: () => void;
@@ -10,4 +12,6 @@ export interface ButtonProps {
 
 export interface ButtonStyledProps {
     $size?: ButtonSize,
+    $style?: ButtonStyle,
+    $disabled?: boolean,
   }

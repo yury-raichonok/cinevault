@@ -1,1 +1,13 @@
 export { HomePage } from './home';
+export { MovieDetailPage } from './moviedetail';
+export { CatalogPage } from './catalog/CatalogPage';
+export { WatchPage } from './watch/WatchPage';
+export { SearchPage } from './search/SearchPage';
+export { LoginPage } from './auth/LoginPage';
+export { RegisterPage } from './auth/RegisterPage';
+export { ProfilePage } from './profile/ProfilePage';
+export { AssistantPage } from './assistant/AssistantPage';
+export { SettingsPage } from './settings/SettingsPage';
+export { NotificationsPage } from './notifications/NotificationsPage';
+export { AdminMoviesPage } from './admin/AdminMoviesPage';
+export { AdminMovieFormPage } from './admin/AdminMovieFormPage';

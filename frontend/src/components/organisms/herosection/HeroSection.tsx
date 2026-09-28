@@ -1,19 +1,27 @@
 import { ReactElement } from 'react';
 
-import { ButtonType } from '@app-types/types';
+import { ButtonStyle, ButtonType } from '@app-types/common/types';
 
-import { HeroSectionProps } from './types';
-import { HeroSectionStyled, HeroSectionButton } from './styled';
+import { HeroProps } from './types';
+import { HeroWrapper, HeroStyled, HeroSectionButton } from './styled';
 
-
-export function HeroSection({image, buttonText, buttonLink}: HeroSectionProps): ReactElement {
+export function HeroSection({image, text, buttonText, buttonLink}: HeroProps): ReactElement {
+    console.log(buttonLink);
     return (
-        <HeroSectionStyled backgroundImage={image}>
-            <HeroSectionButton
-                type={ButtonType.LINK} 
-                text={buttonText} 
-                link={buttonLink} 
-            />
-        </HeroSectionStyled>
+        <HeroWrapper $backgroundImage={image}>
+            <HeroStyled>
+                <div>
+                    <span>
+                        {text}
+                    </span>
+                </div>
+                <HeroSectionButton
+                    type={ButtonType.LINK} 
+                    style={ButtonStyle.TRANSPARENT}
+                    text={buttonText} 
+                    link={buttonLink} 
+                />
+            </HeroStyled>
+        </HeroWrapper>
     )
 }
